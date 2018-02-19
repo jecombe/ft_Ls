@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 16:07:03 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 18:23:40 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 18:27:17 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ void		affiche(t_result *result, t_tree *tree)
 {
 
 	ft_putstr(result->un);
-	ft_putstr("\t");
+	ft_putstr(" ");
 	ft_putstr(result->deux);
 	ft_putstr("\t");
 	ft_putstr(result->trois);

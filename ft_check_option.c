@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:40:33 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 15:05:33 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 15:30:10 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,7 +87,6 @@ void			ft_check_first(t_tree *tree, t_dir *dir)
 void			ft_check_options(t_dir *dir, int argc, char **argv)
 {
 	int i;
-	int j;
 
 	i = 1;
 	while (i < argc && (!ft_strequ("--", argv[i])) && (argv[i][0] == '-' 

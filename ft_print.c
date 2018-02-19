@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 16:07:03 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 15:09:14 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 15:31:21 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,11 +68,9 @@ void			affiche(t_result *result, t_tree *tree)
 void			ft_format(char **long_l, t_dir *dir, t_tree *tree)
 
 {
-	char dest[30];
-	char *src;
-
 	short int i;
 	int j;
+
 	i = 0;
 	j = 0;
 	static t_result *result;

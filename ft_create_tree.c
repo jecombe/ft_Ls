@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 14:07:21 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 14:51:58 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 15:30:36 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,7 +84,6 @@ void			ft_check_s(t_dir *dir, t_tree *node)
 t_tree			*ft_create_node(t_dir *dir, char *param)
 {
 	t_tree		*node;
-	char		*temp;
 
 	node = tree_init();
 	node->name = ft_strdup(param);

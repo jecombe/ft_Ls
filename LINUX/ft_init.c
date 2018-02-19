@@ -16,7 +16,7 @@
 void		ft_init(t_dir *dir)
 {
 	dir->options = ft_memalloc(sizeof(int) * 8);
-	dir->max_len = ft_memalloc(sizeof(int) * 9);
+	dir->max_len = ft_memalloc(sizeof(int) * 8);
 	dir->path = ft_strnew(PATH_MAX);
 	dir->path_dir = ft_strnew(PATH_MAX);
 	dir->file_param = NULL;
@@ -58,7 +58,4 @@ t_tree *tree_init(void)
 	node->fifo = 0;
 	node->lnk = 0;
 	return (node);
-
 }
-
-

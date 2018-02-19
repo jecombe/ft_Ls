@@ -77,7 +77,6 @@ int main(int argc, char **argv)
 	t_dir		*dir;
 	int			i;
 
-	i = 0;
 	dir = NULL;
 	dir = ft_memalloc(sizeof(t_dir));
 
@@ -107,8 +106,6 @@ int main(int argc, char **argv)
 		ft_check_first(dir->param, dir);
 		ft_display_dir(dir->param, dir);
 	}
-
 	ft_free_dir(dir);
-
 	return (0);
 }

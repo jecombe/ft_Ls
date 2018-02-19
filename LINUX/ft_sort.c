@@ -70,7 +70,6 @@ void			ft_recurs(t_tree *tree, t_dir *dir, char *current)
 	if (tree->right)
 		ft_recurs(tree->right, dir, tmp);
 	free(tmp);
-	free(tree->name);
 	free(tree);
 }
 
@@ -90,7 +89,6 @@ void			ft_recurs_rev(t_tree *tree, t_dir *dir, char *current)
 	if (tree->left)
 		ft_recurs_rev(tree->left, dir, tmp);
 	free(tmp);
-	free(tree->name);
 	free(tree);
 }
 

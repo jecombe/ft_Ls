@@ -66,16 +66,16 @@ return (device);
 
 char				*ft_modif_date(t_dir *dir)
 {
-	time_t			now;
+	time_t			actual;
 	char			*tmp;
 	char			*modif;
 
-	now = 0;
-	time(&now);
+	actual = 0;
+	time(&actual);
 	tmp = ft_strdup(ctime(&dir->info.st_mtime));
 	modif = ft_strnew(ft_strlen(tmp));
-	 if (dir->info.st_mtime < (now - 15778800) ||
-			dir->info.st_mtime > (now + 15778800))
+	 if (dir->info.st_mtime < (actual - 15778800) ||
+			dir->info.st_mtime > (actual + 15778800))
 	{
 		ft_strncpy(modif, &tmp[4], 7);
 		ft_strncpy(&modif[ft_strlen(modif)], &tmp[19], 5);
@@ -88,25 +88,24 @@ char				*ft_modif_date(t_dir *dir)
 
 char				**ft_list_long(t_dir *dir, char *param)
 {
-	char			**opt_l;
-	int i;
-	i = 0 ;
-	opt_l = ft_memalloc(sizeof(char *) * 9);
-	dir->sizeblock = dir->sizeblock + dir->info.st_blocks;
+	char			**tab;
+
+	tab = ft_memalloc(sizeof(char *) * 9);
 	dir->user = getpwuid(dir->info.st_uid);
+	dir->sizeblock = dir->sizeblock + dir->info.st_blocks;
 	dir->group = getgrgid(dir->info.st_gid);
-	opt_l[0] = ft_permissions(dir);
-	opt_l[1] = ft_itoa(dir->info.st_nlink);
-	opt_l[2] = (dir->user ? ft_strdup(dir->user->pw_name) :
+	tab[0] = ft_permissions(dir);
+	tab[1] = ft_itoa(dir->info.st_nlink);
+	tab[2] = (dir->user ? ft_strdup(dir->user->pw_name) :
 			ft_itoa(dir->info.st_uid));
-	opt_l[3] = (dir->group ? ft_strdup(dir->group->gr_name) : ft_itoa(dir->info.st_gid));
-	opt_l[4] = ft_device(dir);
-	opt_l[5] = ft_modif_date(dir);
-	opt_l[6] = param ? ft_strdup(param) : ft_strdup(dir->file->d_name);
-	opt_l[7] = ft_strnew(PATH_MAX);
+	tab[3] = (dir->group ? ft_strdup(dir->group->gr_name) : ft_itoa(dir->info.st_gid));
+	tab[4] = ft_device(dir);
+	tab[5] = ft_modif_date(dir);
+	tab[6] = param ? ft_strdup(param) : ft_strdup(dir->file->d_name);
+	tab[7] = ft_strnew(PATH_MAX);
 	if (S_ISLNK(dir->info.st_mode))
-		param ? (readlink(param, opt_l[7], 1024)) : (readlink(dir->path, opt_l[7], 1024));
-	return (opt_l);
+		param ? (readlink(param, tab[7], 1024)) : (readlink(dir->path, tab[7], 1024));
+	return (tab);
 }
 
 int				ft_list(t_dir *dir, char *name)
@@ -114,8 +113,6 @@ int				ft_list(t_dir *dir, char *name)
 	short int i;
 
 	i = 0;
-	while (i < 8)
-		dir->max_len[i++] = 0;
 	dir->sizeblock = 0;
 	dir->node = NULL;
 	if (ft_create_tree(name, dir) == -1)
@@ -126,9 +123,7 @@ int				ft_list(t_dir *dir, char *name)
 	else
 	{
 		if (dir->options[3] == 1)
-		{
 			ft_recurs_rev(dir->node, dir, name);
-		}
 		else
 			ft_recurs(dir->node, dir, name);
 	}

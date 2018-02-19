@@ -46,9 +46,9 @@ void			ft_check_option_node(t_dir *dir, t_tree *node, char *param)
 	if (dir->options[0] == 1)
 	{
 		if (dir->options[6] == 1)
-			node->list_long = ft_list_long(dir, node->name);
+			node->tab_list = ft_list_long(dir, node->name);
 		else if (dir->options[6] == 0)
-			node->list_long = ft_list_long(dir, param);
+			node->tab_list = ft_list_long(dir, param);
 	}
 	if (dir->options[4] == 1)
 	{

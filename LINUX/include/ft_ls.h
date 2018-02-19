@@ -32,7 +32,7 @@ typedef struct		s_tree
 	struct	s_tree	*right;
 
 	char			*name;
-	char			**list_long;
+	char			**tab_list;
 	int				isdir;
 	unsigned int	time;
 	long			nanosec;

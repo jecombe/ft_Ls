@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 16:07:03 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 15:59:48 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 17:46:43 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -113,10 +113,8 @@ void		ft_putstr_color(char const *s, t_tree *tree)
 			ft_putstr("\033[1;36m");
 		if (tree->lnk == 1)
 			ft_putstr("\033[1;35m");
-
 		while (*s != '\0')
 		{
-
 			ft_putchar(*s);
 			s++;
 		}
@@ -154,7 +152,6 @@ void		ft_print_tree_rev(t_tree *tree, t_dir *dir)
 		if (dir->options[0] == 1)
 		{
 			ft_padding(tree->list_long, dir, tree);
-
 			free(tree->linelist);
 		}
 		else
@@ -173,7 +170,6 @@ void			ft_print(t_dir *dir, char *current)
 	int i;
 
 	i = 0;
-
 	if (dir->options[7] == 1 && dir->first_result == 0)
 	{
 		ft_putendl(current);

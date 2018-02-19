@@ -17,7 +17,7 @@ void		ft_putstr_color(char const *si, t_tree *tree);
 void		captage(t_result *result,char *ch, int i, t_dir *dir, t_tree *tree)
 {
 	if (!ch)
-		;
+		return;
 	if (i == 0)
 		result->un = ch;
 	else if (i == 1)

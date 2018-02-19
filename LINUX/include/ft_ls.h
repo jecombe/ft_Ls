@@ -20,7 +20,7 @@
 # include <sys/types.h>
 # include <pwd.h>
 # include <grp.h>
-# include <uuid/uuid.h>
+# include <sys/sysmacros.h>
 # include <time.h>
 # include <stdio.h>
 # include <errno.h>

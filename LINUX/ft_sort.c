@@ -40,9 +40,9 @@ void		ft_sort_date(t_tree **tree_ftdate, t_dir *dir, char *name)
 		ft_sort_date(&(*tree_ftdate)->right, dir, name);
 	else
 	{
-		if (dir->info.st_mtimespec.tv_nsec > (*tree_ftdate)->nanosec)
+		if (dir->info.st_mtim.tv_nsec > (*tree_ftdate)->nanosec)
 			ft_sort_date(&(*tree_ftdate)->left, dir, name);
-		else if (dir->info.st_mtimespec.tv_nsec < (*tree_ftdate)->nanosec)
+		else if (dir->info.st_mtim.tv_nsec < (*tree_ftdate)->nanosec)
 			ft_sort_date(&(*tree_ftdate)->right, dir, name);
 		else
 		{

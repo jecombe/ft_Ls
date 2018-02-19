@@ -53,7 +53,7 @@ void			ft_check_option_node(t_dir *dir, t_tree *node, char *param)
 	if (dir->options[4] == 1)
 	{
 		node->time = dir->info.st_mtime;
-		node->nanosec = dir->info.st_mtimespec.tv_nsec;
+		node->nanosec = dir->info.st_mtim.tv_nsec;
 	}
 	if (!dir->info.st_mode)
 	{

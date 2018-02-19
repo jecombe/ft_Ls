@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 15:42:57 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 14:27:39 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 15:06:14 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,7 +58,7 @@ char		*ft_device(t_dir *dir)
 		ft_strcpy(&device[ft_strlen(device) - 1 - ft_strlen(temp)], temp);
 		free(temp);
 	}
-	else 
+	else
 		device = ft_itoa(dir->info.st_size);
 return (device);
 
@@ -126,9 +126,7 @@ int				ft_list(t_dir *dir, char *name)
 	else
 	{
 		if (dir->options[3] == 1)
-		{
 			ft_recurs_rev(dir->node, dir, name);
-		}
 		else
 			ft_recurs(dir->node, dir, name);
 	}

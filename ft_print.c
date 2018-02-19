@@ -6,15 +6,14 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 16:07:03 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 14:27:42 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 15:09:14 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "include/ft_ls.h"
-void		ft_putstr_color(char const *si, t_tree *tree);
 
-void		captage(t_result *result,char *ch, int i, t_dir *dir, t_tree *tree)
+void			captage(t_result *result,char *ch, int i, t_dir *dir, t_tree *tree)
 {
 	if (!ch)
 		;
@@ -45,7 +44,7 @@ void		captage(t_result *result,char *ch, int i, t_dir *dir, t_tree *tree)
 	}
 }
 
-void		affiche(t_result *result, t_tree *tree)
+void			affiche(t_result *result, t_tree *tree)
 {
 
 	ft_putstr(result->un);
@@ -66,7 +65,7 @@ void		affiche(t_result *result, t_tree *tree)
 	ft_putstr("\n");
 }
 
-void ft_format(char **long_l, t_dir *dir, t_tree *tree)
+void			ft_format(char **long_l, t_dir *dir, t_tree *tree)
 
 {
 	char dest[30];
@@ -99,14 +98,15 @@ void ft_format(char **long_l, t_dir *dir, t_tree *tree)
 }
 
 
-void ft_padding(char **long_l, t_dir *dir, t_tree *tree)
+void			ft_padding(char **long_l, t_dir *dir, t_tree *tree)
 {
 	ft_format(long_l, dir, tree);
 }
 
-void		ft_putstr_color(char const *s, t_tree *tree)
+void			ft_putstr_color(char const *s, t_tree *tree)
 {
 	int i;
+
 	i = 0;
 	if (s)
 	{
@@ -119,14 +119,11 @@ void		ft_putstr_color(char const *s, t_tree *tree)
 			ft_putstr("\033[1;35m");
 
 		while (*s != '\0')
-		{
-
-			ft_putchar(*s);
-			s++;
-		}
+			ft_putchar(*s++);
 	}
 }
-void		ft_print_tree(t_tree *tree, t_dir *dir)
+
+void			ft_print_tree(t_tree *tree, t_dir *dir)
 {
 	if (tree->left)
 		ft_print_tree(tree->left, dir);
@@ -177,7 +174,6 @@ void			ft_print(t_dir *dir, char *current)
 	int i;
 
 	i = 0;
-
 	if (dir->options[7] == 1 && dir->first_result == 0)
 	{
 		ft_putendl(current);
@@ -209,11 +205,7 @@ void			ft_print(t_dir *dir, char *current)
 		ft_putstr("\n");
 	}
 	if (dir->options[3] == 0)
-	{
 		ft_print_tree(dir->node, dir);
-	}
 	else
-	{
 		ft_print_tree_rev(dir->node, dir);
-	}
 }

@@ -1,25 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_check_option.c                                .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/19 15:01:42 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 15:02:29 by jecombe     ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
 /*   ft_check_options.c                               .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:40:33 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 15:01:20 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 15:05:33 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +55,7 @@ void			ft_sort_options(t_dir *dir, char **argv, int i)
 		{
 			dir->options[4] == 1 ? ft_sort_date(&dir->file_param, dir, argv[i]) : 0;
 			dir->options[4] == 0 ? ft_sort_name(&dir->file_param, dir, argv[i]) : 0;
-		}	
+		}
 		if (!dir->info.st_mode)
 			ft_sort_name(&dir->bad_param, dir, argv[i]);
 		if (S_ISDIR(dir->info.st_mode))
@@ -93,9 +80,7 @@ void			ft_print_param(t_dir *dir, t_tree *tree)
 void			ft_check_first(t_tree *tree, t_dir *dir)
 {
 	if (tree->left)
-	{
 		ft_check_first(tree->left, dir);
-	}
 	else
 		dir->first = ft_strdup(tree->name);
 }
@@ -117,15 +102,12 @@ void			ft_check_options(t_dir *dir, int argc, char **argv)
 		ft_strchr(argv[i], '1') ? (dir->options[5] = 1) : 0;
 		ft_strchr(argv[i], 'F') ? (dir->options[6] = 1) : 0;
 		ft_strchr(argv[i], 'd') ? (dir->options[7] = 1) : 0;
-
 		i++;
 	}
 	if (ft_strequ(argv[i], "--"))
 		i++;
 	if (i == argc)
-	{
 		ft_sort_name(&dir->param, dir, ".");
-	}
 	if (i < argc - 1)
 		dir->first_result = 1;
 	else

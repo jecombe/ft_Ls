@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 13:09:25 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 14:46:11 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 15:08:30 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,4 +115,5 @@ void		ft_recurs_rev(t_tree *tree, t_dir *dir, char *current);
 int			ft_create_tree(char *current, t_dir *dir);
 void		ft_init_node(t_tree *node);
 t_tree		*tree_init(void);
+void			ft_putstr_color(char const *si, t_tree *tree);
 #endif

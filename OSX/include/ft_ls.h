@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 13:09:25 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 14:46:11 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/22 18:17:58 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 # include <sys/types.h>
 # include <pwd.h>
 # include <grp.h>
-# include <sys/sysmacros.h>
+# include <uuid/uuid.h>
 # include <time.h>
 # include <stdio.h>
 # include <errno.h>
@@ -32,7 +32,7 @@ typedef struct		s_tree
 	struct	s_tree	*right;
 
 	char			*name;
-	char			**list_long;
+	char			**tab_list;
 	int				isdir;
 	unsigned int	time;
 	long			nanosec;
@@ -114,5 +114,5 @@ void		ft_recurs(t_tree *tree, t_dir *dir, char *current);
 void		ft_recurs_rev(t_tree *tree, t_dir *dir, char *current);
 int			ft_create_tree(char *current, t_dir *dir);
 void		ft_init_node(t_tree *node);
-t_tree		*tree_init(void);
+void		init_node(t_tree *tree, char *param);
 #endif

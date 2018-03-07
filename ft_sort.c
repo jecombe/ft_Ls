@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/19 12:54:49 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 13:22:07 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 16:19:22 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,6 @@ void			ft_sort_name(t_tree **tree_ftname, t_dir *dir, char *name)
 		*tree_ftname = ft_create_node(dir, name);
 		return ;
 	}
-
 	if (ft_strcmp(name, (*tree_ftname)->name) < 0)
 		ft_sort_name(&(*tree_ftname)->left, dir, name);
 	else
@@ -63,7 +62,7 @@ void			ft_recurs(t_tree *tree, t_dir *dir, char *current)
 		ft_recurs(tree->left, dir, tmp);
 	if (tree->isdir == 1)
 	{
-			ft_create_path(dir->path_dir, tmp, tree->name);
+		ft_create_path(dir->path_dir, tmp, tree->name);
 		if (ft_list(dir, dir->path_dir) == -1)
 			ft_print_error(dir, tmp, tree->name);
 	}

@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 16:07:03 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 13:26:28 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 16:15:39 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,18 +17,9 @@ void			ft_print_tree(t_tree *tree, t_dir *dir)
 {
 	if (tree->left)
 		ft_print_tree(tree->left, dir);
-	if (ft_strequ(tree->name, "..") && dir->options[2] == 0 && dir->options[0] == 1)
-	{
-		free(tree->tab_list[0]);
-			  free(tree->tab_list[1]);
-			  free(tree->tab_list[2]);
-			  free(tree->tab_list[3]);
-			  free(tree->tab_list[4]);
-			  free(tree->tab_list[5]);
-			  free(tree->tab_list[6]);
-			  free(tree->tab_list[7]);
-			  free(tree->tab_list);
-	}
+	if (ft_strequ(tree->name, "..") && dir->options[2] == 0 &&
+			dir->options[0] == 1)
+		ft_free_tab(tree->tab_list);
 	if (dir->options[2] == 1 || (dir->options[2] == 0 && tree->name[0] != '.'))
 	{
 		if (dir->options[0] == 1)
@@ -38,22 +29,24 @@ void			ft_print_tree(t_tree *tree, t_dir *dir)
 			ft_putstr_color(tree->name, tree);
 			ft_putstr("\033[0m");
 			if (dir->options[6] == 1)
-			{
-				if (tree->reg == 1)
-					ft_putstr("*");
-				if (tree->dir == 1)
-					ft_putstr("/");
-				if (tree->lnk == 1)
-					ft_putstr("@");
-				if (tree->fifo)
-					ft_putstr("|");
-			}
+				ft_check_special(tree);
 			ft_putstr("\n");
 		}
 	}
 	if (tree->right)
 		ft_print_tree(tree->right, dir);
+}
 
+void			ft_check_special(t_tree *tree)
+{
+	if (tree->reg == 1)
+		ft_putstr("*");
+	if (tree->dir == 1)
+		ft_putstr("/");
+	if (tree->lnk == 1)
+		ft_putstr("@");
+	if (tree->fifo)
+		ft_putstr("|");
 }
 
 void			ft_print_tree_rev(t_tree *tree, t_dir *dir)
@@ -69,16 +62,7 @@ void			ft_print_tree_rev(t_tree *tree, t_dir *dir)
 			ft_putstr_color(tree->name, tree);
 			ft_putstr("\033[0m");
 			if (dir->options[6] == 1)
-			{
-				if (tree->reg == 1)
-					ft_putstr("*");
-				if (tree->dir == 1)
-					ft_putstr("/");
-				if (tree->lnk == 1)
-					ft_putstr("@");
-				if (tree->fifo)
-					ft_putstr("|");
-			}
+				ft_check_special(tree);
 			ft_putstr("\n");
 		}
 	}
@@ -105,7 +89,6 @@ void			ft_print(t_dir *dir, char *current)
 {
 	if (dir->options[7] == 1 && dir->first_result == 0)
 	{
-		printf("LALALA");
 		ft_putendl(current);
 		return ;
 	}

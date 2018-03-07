@@ -6,7 +6,7 @@
 #    By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/19 15:21:11 by jecombe      #+#   ##    ##    #+#        #
-#    Updated: 2018/03/07 13:27:25 by jecombe     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/07 16:23:44 by jecombe     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,6 +30,7 @@ FILES = ft_init.c \
 		ft_check_option.c \
 		ft_print_next.c \
 		ft_list.c \
+		ft_tools.c \
 		ft_print.c \
 		ft_sort.c \
 		main.c \

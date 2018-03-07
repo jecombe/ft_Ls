@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 13:14:54 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 12:51:48 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 16:07:28 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ void			ft_init(t_dir *dir)
 	dir->options = ft_memalloc(sizeof(int) * 8);
 	dir->path = ft_strnew(PATH_MAX);
 	dir->path_dir = ft_strnew(PATH_MAX);
-	dir->file_param = NULL;
+	dir->file_p = NULL;
 	dir->bad_param = NULL;
 	dir->param = NULL;
 	dir->first_result = 0;
@@ -47,6 +47,7 @@ void			ft_free(t_tree *node)
 t_tree			*tree_init(void)
 {
 	t_tree *node;
+
 	node = ft_memalloc(sizeof(t_tree));
 	node->left = NULL;
 	node->right = NULL;

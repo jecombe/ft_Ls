@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 13:09:25 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 12:37:26 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 16:20:16 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@
 # include <limits.h>
 
 int g_o;
-int aa;
+int g_a;
 
 typedef struct			s_tree
 {
@@ -67,7 +67,7 @@ typedef struct			s_dir
 	char				*name2;
 	t_tree				*node;
 	t_tree				*param;
-	t_tree				*file_param;
+	t_tree				*file_p;
 	t_tree				*bad_param;
 	blkcnt_t			sizeblock;
 }						t_dir;
@@ -102,5 +102,6 @@ t_tree					*tree_init(void);
 void					ft_putstr_color(char const *s, t_tree *tree);
 void					affiche_next(t_tree *tree, t_dir *dir, char **result);
 void					affiche(char **result, t_tree *tree, t_dir *dir);
-
+void					ft_free_tab(char **tab_list);
+void					ft_check_special(t_tree *tree);
 #endif

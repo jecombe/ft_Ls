@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 15:42:57 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 13:10:48 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 16:09:42 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -112,23 +112,13 @@ int					ft_list(t_dir *dir, char *name)
 {
 	dir->sizeblock = 0;
 	dir->node = NULL;
-		if (ft_create_tree(name, dir) == -1)
+	if (ft_create_tree(name, dir) == -1)
 		return (-1);
 	ft_print(dir, name);
 	if (dir->options[1] == 0)
 	{
 		if (dir->options[0] == 1 && dir->options[2] == 0)
-		{
-		free(dir->node->tab_list[0]);
-		free(dir->node->tab_list[1]);
-		free(dir->node->tab_list[2]);
-		free(dir->node->tab_list[3]);
-		free(dir->node->tab_list[4]);
-		free(dir->node->tab_list[5]);
-		free(dir->node->tab_list[6]);
-		free(dir->node->tab_list[7]);
-		free(dir->node->tab_list);
-		}
+			ft_free_tab(dir->node->tab_list);
 		ft_free(dir->node);
 	}
 	else

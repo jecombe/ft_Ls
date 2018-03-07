@@ -1,0 +1,71 @@
+==82368== Memcheck, a memory error detector
+==82368== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==82368== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==82368== Command: ./a.out
+==82368== Parent PID: 81948
+==82368== 
+==82368== Syscall param msg->desc.port.name points to uninitialised byte(s)
+==82368==    at 0x1003B534A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
+==82368==    by 0x1003B4796: mach_msg (in /usr/lib/system/libsystem_kernel.dylib)
+==82368==    by 0x1003AE485: task_set_special_port (in /usr/lib/system/libsystem_kernel.dylib)
+==82368==    by 0x10054A10E: _os_trace_create_debug_control_port (in /usr/lib/system/libsystem_trace.dylib)
+==82368==    by 0x10054A458: _libtrace_init (in /usr/lib/system/libsystem_trace.dylib)
+==82368==    by 0x1000B39DF: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==82368==    by 0x100023A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==82368==    by 0x100023C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==82368==    by 0x10001F4A9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==82368==    by 0x10001F440: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==82368==    by 0x10001E523: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==82368==    by 0x10001E5B8: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==82368==  Address 0x104896d6c is on thread 1's stack
+==82368==  in frame #2, created by task_set_special_port (???:)
+==82368== 
+==82368== 
+==82368== HEAP SUMMARY:
+==82368==     in use at exit: 18,146 bytes in 162 blocks
+==82368==   total heap usage: 261 allocs, 99 frees, 33,396 bytes allocated
+==82368== 
+==82368== 2 bytes in 1 blocks are definitely lost in loss record 2 of 45
+==82368==    at 0x1000A49B6: malloc (in /Users/jecombe/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==82368==    by 0x100004A76: ft_strdup (ft_strdup.c:25)
+==82368==    by 0x100001F83: ft_check_s (ft_create_tree.c:75)
+==82368==    by 0x1000020FC: ft_create_node (ft_create_tree.c:100)
+==82368==    by 0x10000352E: ft_sort_name (ft_sort.c:20)
+==82368==    by 0x100001B04: ft_check_options (ft_check_option.c:112)
+==82368==    by 0x1000033A0: main (main.c:90)
+==82368== 
+==82368== 72 bytes in 3 blocks are possibly lost in loss record 28 of 45
+==82368==    at 0x1000A5022: calloc (in /Users/jecombe/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==82368==    by 0x1005BE846: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==82368==    by 0x1005D1FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==82368==    by 0x10001303B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==82368==    by 0x100013255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==82368==    by 0x10020C00A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==82368==    by 0x1005BE074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==82368==    by 0x10019F68D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==82368==    by 0x10019F63A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==82368==    by 0x1000B39D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==82368==    by 0x100023A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==82368==    by 0x100023C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==82368== 
+==82368== 144 (80 direct, 64 indirect) bytes in 1 blocks are definitely lost in loss record 31 of 45
+==82368==    at 0x1000A49B6: malloc (in /Users/jecombe/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==82368==    by 0x1000040D8: ft_memalloc (ft_memalloc.c:20)
+==82368==    by 0x1000022E3: tree_init (ft_init.c:61)
+==82368==    by 0x100001FB4: ft_create_node (ft_create_tree.c:84)
+==82368==    by 0x10000352E: ft_sort_name (ft_sort.c:20)
+==82368==    by 0x100001B04: ft_check_options (ft_check_option.c:112)
+==82368==    by 0x1000033A0: main (main.c:90)
+==82368== 
+==82368== LEAK SUMMARY:
+==82368==    definitely lost: 82 bytes in 2 blocks
+==82368==    indirectly lost: 64 bytes in 2 blocks
+==82368==      possibly lost: 72 bytes in 3 blocks
+==82368==    still reachable: 200 bytes in 6 blocks
+==82368==         suppressed: 17,728 bytes in 149 blocks
+==82368== Reachable blocks (those to which a pointer was found) are not shown.
+==82368== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==82368== 
+==82368== For counts of detected and suppressed errors, rerun with: -v
+==82368== Use --track-origins=yes to see where uninitialised values come from
+==82368== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 11 from 11)

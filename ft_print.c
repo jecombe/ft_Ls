@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 16:07:03 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 16:15:39 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/14 13:54:25 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,29 +87,15 @@ void			ft_print_next(t_dir *dir)
 
 void			ft_print(t_dir *dir, char *current)
 {
-	if (dir->options[7] == 1 && dir->first_result == 0)
-	{
-		ft_putendl(current);
-		return ;
-	}
 	if (dir->first_result == 1 || (dir->options[1] == 1
 				&& dir->first_result == 1))
 	{
-		if (dir->options[7] == 1)
+		if (!ft_strequ(current, dir->first))
 		{
-			if (dir->options[0] == 0)
-				ft_putendl(current);
-			return ;
+			ft_putstr("\n");
 		}
-		else if (dir->options[7] == 0)
-		{
-			if (!ft_strequ(current, dir->first))
-			{
-				ft_putstr("\n");
-			}
-			ft_putstr(current);
-			ft_putstr(":\n");
-		}
+		ft_putstr(current);
+		ft_putstr(":\n");
 	}
 	ft_print_next(dir);
 }

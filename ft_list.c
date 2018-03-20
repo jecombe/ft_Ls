@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 15:42:57 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 16:09:42 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/15 10:54:02 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ char				*ft_permissions(t_dir *dir)
 	perm[7] = dir->info.st_mode & S_IROTH ? 'r' : '-';
 	perm[8] = dir->info.st_mode & S_IWOTH ? 'w' : '-';
 	perm[9] = dir->info.st_mode & S_IXOTH ? 'x' : '-';
-	if (dir->info.st_mode & S_ISUID)
+	if (dir->info.st_mode & S_ISVTX)
 		perm[9] = dir->info.st_mode & S_IXUSR ? 't' : 'T';
 	return (perm);
 }
@@ -117,7 +117,8 @@ int					ft_list(t_dir *dir, char *name)
 	ft_print(dir, name);
 	if (dir->options[1] == 0)
 	{
-		if (dir->options[0] == 1 && dir->options[2] == 0)
+		if (dir->options[0] == 1 && dir->options[2] == 0
+				&& !ft_strequ(name, "/dev/fd"))
 			ft_free_tab(dir->node->tab_list);
 		ft_free(dir->node);
 	}

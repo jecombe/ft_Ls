@@ -6,38 +6,19 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:40:33 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 16:23:00 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/14 13:53:40 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "include/ft_ls.h"
 
-void			ft_is_false(t_dir *dir, char *options)
+void			ft_no_param(t_dir *dir, char *argv)
 {
-	int i;
-	int co;
-
-	i = 0;
-	co = 0;
-	while (options[i])
+	if (!dir->info.st_mode)
 	{
-		options[i] == '-' ? co++ : 0;
-		if (options[i] != '-' || co >= 2)
-		{
-			if (options[i] != 'l' && options[i] != 'R' && options[i] != 'a'
-					&& options[i] != 'r' && options[i] != 't'
-					&& options[i] != '1'
-					&& options[i] != 'F' && options[i] != 'd')
-			{
-				ft_putstr("ls: illegal option -- ");
-				ft_putchar_fd(co >= 2 ? '-' : options[i], 2);
-				ft_putstr_fd("\nusage: ls [lRart] [file ...]\n", 2);
-				ft_free_dir(dir);
-				exit(1);
-			}
-		}
-		i++;
+		ft_check_g_a(dir);
+		ft_sort_name(&dir->bad_param, dir, argv);
 	}
 }
 
@@ -53,11 +34,11 @@ void			ft_sort_option_next(t_dir *dir, char **argv, int i)
 		lstat(argv[i], &dir->info);
 		if (S_ISLNK(dir->info.st_mode) || S_ISREG(dir->info.st_mode))
 		{
+			ft_check_g_a(dir);
 			dir->options[4] == 1 ? ft_sort_date(&dir->file_p, dir, argv[i]) : 0;
 			dir->options[4] == 0 ? ft_sort_name(&dir->file_p, dir, argv[i]) : 0;
 		}
-		if (!dir->info.st_mode)
-			ft_sort_name(&dir->bad_param, dir, argv[i]);
+		ft_no_param(dir, argv[i]);
 		if (S_ISDIR(dir->info.st_mode))
 		{
 			g_a++;
@@ -84,9 +65,7 @@ void			ft_sort_options(t_dir *dir, char **argv, int i)
 		dir->name2 = NULL;
 	}
 	if (g_o != 1)
-	{
 		ft_sort_option_next(dir, argv, i);
-	}
 }
 
 void			ft_check_options_next(t_dir *dir, int argc, char **argv, int i)
@@ -103,6 +82,7 @@ void			ft_check_options_next(t_dir *dir, int argc, char **argv, int i)
 				o++;
 			argv[o] = ".";
 			ft_sort_options(dir, argv, i);
+			g_o = 0;
 			return ;
 		}
 		ft_sort_name(&dir->param, dir, ".");
@@ -127,7 +107,6 @@ void			ft_check_options(t_dir *dir, int argc, char **argv)
 		ft_strchr(argv[i], 't') ? (dir->options[4] = 1) : 0;
 		ft_strchr(argv[i], '1') ? (dir->options[5] = 1) : 0;
 		ft_strchr(argv[i], 'F') ? (dir->options[6] = 1) : 0;
-		ft_strchr(argv[i], 'd') ? (dir->options[7] = 1) : 0;
 		i++;
 	}
 	if (ft_strequ(argv[i], "--"))

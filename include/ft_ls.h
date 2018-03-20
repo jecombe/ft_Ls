@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 13:09:25 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 16:20:16 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/14 14:11:31 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,6 +59,7 @@ typedef struct			s_dir
 	int					multiple;
 	char				*first;
 	int					first_result;
+	int					perm_denied;
 	struct dirent		*file;
 	struct stat			info;
 	struct group		*group;
@@ -83,11 +84,10 @@ void					ft_print_tree(t_tree *tree, t_dir *dir);
 int						ft_list(t_dir *dir, char *name);
 void					ft_print_tree_rev(t_tree *tree, t_dir *dir);
 void					ft_print(t_dir *dir, char *name);
-void					ft_print_error(t_dir *dir, char *current, char *name);
+void					ft_print_error(t_dir *dir, char *name);
 void					ft_create_path(char *path, char *current, char *name);
 void					ft_free_dir(t_dir *dir);
 void					ft_check_first(t_tree *tree, t_dir *dir);
-void					ft_print_param(t_dir *dir, t_tree *tree);
 void					ft_sort_name(t_tree **tree_ftname, t_dir *dir,
 		char *name);
 void					ft_sort_date(t_tree **tree_ftname, t_dir *dir,
@@ -104,4 +104,10 @@ void					affiche_next(t_tree *tree, t_dir *dir, char **result);
 void					affiche(char **result, t_tree *tree, t_dir *dir);
 void					ft_free_tab(char **tab_list);
 void					ft_check_special(t_tree *tree);
+void					ft_check_g_a(t_dir *dir);
+void					ft_no_param(t_dir *dir, char *argv);
+void					ft_is_false(t_dir *dir, char *options);
+char					*ft_strrev(char *str);
+char					*ft_print_erro_next(char *name);
+void					ft_display_dir(t_tree *tree, t_dir *dir);
 #endif

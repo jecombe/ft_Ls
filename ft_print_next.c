@@ -6,22 +6,17 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/26 14:30:43 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 16:18:50 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/13 16:06:14 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "include/ft_ls.h"
 
-void			affiche_next_next(t_tree *tree, t_dir *dir, char **result,
-		int len)
+void			affiche_next_next(t_tree *tree, t_dir *dir, char **result)
 {
 	if (dir->options[6] == 0 && tree->lnk == 1)
-	{
-		len = readlink(result[6], result[7], 1024);
-		result[7][len] = '\0';
 		ft_putstr(" -> ");
-	}
 	if (tree->lnk == 1)
 		ft_putstr(result[7]);
 	ft_putstr("\n");
@@ -43,12 +38,8 @@ void			affiche_next(t_tree *tree, t_dir *dir, char **result)
 		result[7][len] = '\0';
 	}
 	if (dir->options[6] == 1 && tree->lnk == 1)
-	{
-		len = readlink(result[6], result[7], 1024);
-		result[7][len] = '\0';
 		ft_putstr("@ -> ");
-	}
-	affiche_next_next(tree, dir, result, len);
+	affiche_next_next(tree, dir, result);
 }
 
 void			affiche(char **result, t_tree *tree, t_dir *dir)

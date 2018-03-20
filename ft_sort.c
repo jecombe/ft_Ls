@@ -6,7 +6,7 @@
 /*   By: jecombe <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/19 12:54:49 by jecombe      #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 16:19:22 by jecombe     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/10 15:57:41 by jecombe     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,7 +64,9 @@ void			ft_recurs(t_tree *tree, t_dir *dir, char *current)
 	{
 		ft_create_path(dir->path_dir, tmp, tree->name);
 		if (ft_list(dir, dir->path_dir) == -1)
-			ft_print_error(dir, tmp, tree->name);
+		{
+			ft_print_error(dir, tmp);
+		}
 	}
 	if (tree->right)
 		ft_recurs(tree->right, dir, tmp);
@@ -84,7 +86,11 @@ void			ft_recurs_rev(t_tree *tree, t_dir *dir, char *current)
 	{
 		ft_create_path(dir->path_dir, tmp, tree->name);
 		if (ft_list(dir, dir->path_dir) == -1)
-			ft_print_error(dir, tmp, tree->name);
+		{
+			ft_print_error(dir, tmp);
+			if (dir->options[4] == 1)
+				free(tree->tab_list[0]);
+		}
 	}
 	if (tree->left)
 		ft_recurs_rev(tree->left, dir, tmp);

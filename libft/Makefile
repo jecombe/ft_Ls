@@ -6,7 +6,7 @@
 #    By: jecombe <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/10 17:05:30 by jecombe           #+#    #+#              #
-#    Updated: 2017/12/12 18:25:28 by jecombe     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/15 16:03:21 by jecombe     ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ FILES = ft_islower.c ft_memcpy.c ft_putnbr_fd.c ft_strdup.c ft_strmapi.c \
 	  ft_strnlen.c  ft_isascii.c ft_memchr.c ft_putendl_fd.c ft_strcpy.c \
 	  ft_strlen_split.c ft_strnstr.c ft_isdigit.c ft_memcmp.c ft_putnbr.c \
 	  ft_strdel.c ft_strmap.c ft_strrchr.c ft_lstadd.c ft_lstdel.c \
-	  ft_lstdelone.c ft_lstiter.c ft_lstnew.c ft_swap.c ft_lstmap.c
+	  ft_lstdelone.c ft_lstiter.c ft_lstnew.c ft_swap.c ft_lstmap.c \
 
 SRCS = $(FILES)
 

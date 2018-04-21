@@ -1,3 +1,3 @@
 # minishell
 
-![alt text](https://github.com/jecombe/minishell/blob/master/img/minishell.png)
+![alt text](https://github.com/jecombe/ft_Ls/blob/master/img/ft_ls.png)
